@@ -1,6 +1,13 @@
 package br.com.andrewribeiro.allkeys.utils;
 
+import br.com.andrewribeiro.ribrest.model.interfaces.Model;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.SecureRandom;
+import java.util.Base64;
 
 /**
  *
@@ -32,4 +39,18 @@ public class Utils {
         return cleanBase64;
     }
     
+    public static String saveFileAndGenerateLink(String possibleBase64) throws IOException {        
+        String base64 = cleanToValidBase64(possibleBase64);
+        byte[] dataBase64 = Base64.getDecoder().decode(base64);
+        StringBuilder stringBuilder = new StringBuilder();
+        String fileName = stringBuilder.append(System.currentTimeMillis()).append(".png").toString();
+        stringBuilder.delete(0, stringBuilder.length());
+        Path path = Paths.get(stringBuilder.append(Constants.STATIC_SRC).append(File.separator).append(fileName).toString());
+        Files.write(path,dataBase64);
+        stringBuilder.delete(0, stringBuilder.length());        
+        return stringBuilder.append(Constants.BASE_URL)
+                .append(Constants.STATIC_PATH)
+                .append(File.separator)
+                .append(fileName).toString();
+    }
 }

@@ -2,6 +2,7 @@ package br.com.andrewribeiro.allkeys.user.commands;
 
 import br.com.andrewribeiro.allkeys.generics.GenericCommand;
 import br.com.andrewribeiro.allkeys.models.User;
+import br.com.andrewribeiro.allkeys.utils.Constants;
 import br.com.andrewribeiro.allkeys.utils.Utils;
 import br.com.andrewribeiro.ribrest.exceptions.RibrestDefaultException;
 import java.io.File;
@@ -46,10 +47,10 @@ public class ValidateUserBeforeInsertCommand extends GenericCommand {
                 StringBuilder stringBuilder = new StringBuilder();
                 String fileName = stringBuilder.append(user.getSecureCode()).append(".png").toString();
                 stringBuilder.delete(0, stringBuilder.length());
-                Path path = Paths.get(stringBuilder.append("statics").append(File.separator).append(fileName).toString());
+                Path path = Paths.get(stringBuilder.append(Constants.STATIC_SRC).append(File.separator).append(fileName).toString());
                 Files.write(path, bytePicture);
                 stringBuilder.delete(0, stringBuilder.length());
-                user.setPictureLink(stringBuilder.append(File.separator).append("static").append(File.separator).append(fileName).toString());
+                user.setPictureLink(stringBuilder.append(Constants.BASE_URL).append(Constants.STATIC_PATH).append(File.separator).append(fileName).toString());
             } catch (Exception e) {
                 throw new RibrestDefaultException("problem saving picture");
             }
