@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.SecureRandom;
+import java.sql.Timestamp;
 import java.util.Base64;
 
 /**
@@ -52,5 +53,9 @@ public class Utils {
                 .append(Constants.STATIC_PATH)
                 .append(File.separator)
                 .append(fileName).toString();
+    }
+    
+    public static Timestamp getCurrentTime() {
+        return new Timestamp(System.currentTimeMillis());
     }
 }

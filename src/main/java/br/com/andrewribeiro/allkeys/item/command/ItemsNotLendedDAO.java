@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
  *
  * @author Andrew Ribeiro
  */
-public class ItemsNotLendedDAO extends CRUDDAOImpl{
+public class ItemsNotLendedDAO extends CRUDDAOImpl {
 
     @Override
     public void read() {
@@ -21,11 +21,12 @@ public class ItemsNotLendedDAO extends CRUDDAOImpl{
         Root root = criteriaQuery.from(Item.class);
         Join itemLendingsJoin = root.join("lendings", JoinType.LEFT);
         criteriaQuery = criteriaQuery.select(root).where(
-                builder.equal(itemLendingsJoin.get("status"), "Ativo")
+                builder.or(
+                        builder.equal(itemLendingsJoin.get("status"), "Devolvido"),
+                        builder.isNull(itemLendingsJoin.get("status"))
+                )
         );
-        entityManager.createQuery(criteriaQuery).getResultList();
+        flowContainer.getHolder().setModels(entityManager.createQuery(criteriaQuery).getResultList());
     }
-    
-    
-    
+
 }

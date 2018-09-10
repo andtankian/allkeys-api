@@ -1,14 +1,15 @@
 package br.com.andrewribeiro.allkeys.models;
 
+import br.com.andrewribeiro.allkeys.lending.command.ValidateLendingBeforeInsertCommand;
 import br.com.andrewribeiro.ribrest.annotations.RibrestEndpointConfigurator;
 import br.com.andrewribeiro.ribrest.annotations.RibrestModel;
+import br.com.andrewribeiro.ribrest.services.command.GetPersistentChildrenModelCommand;
 import java.security.Timestamp;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -16,16 +17,20 @@ import javax.persistence.OneToOne;
  */
 @RibrestModel(defaultEndpointsConfigurators = {
     @RibrestEndpointConfigurator(
-            method = "POST"
+            method = "POST",
+            beforeCommands = {
+                ValidateLendingBeforeInsertCommand.class,
+                GetPersistentChildrenModelCommand.class   
+            }
     )
 })
 @Entity
 public class Lending extends GenericModel{
     
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private User user;
     
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Item item;
     
     @Column
