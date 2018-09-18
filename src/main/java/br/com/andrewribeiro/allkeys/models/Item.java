@@ -1,6 +1,6 @@
 package br.com.andrewribeiro.allkeys.models;
 
-import br.com.andrewribeiro.allkeys.item.command.ItemsNotLendedDAO;
+import br.com.andrewribeiro.allkeys.lending.daos.ItemsNotLendedDAO;
 import br.com.andrewribeiro.allkeys.item.command.ValidateItemBeforeInsertCommand;
 import br.com.andrewribeiro.ribrest.annotations.RibrestEndpointConfigurator;
 import br.com.andrewribeiro.ribrest.annotations.RibrestModel;
@@ -46,6 +46,7 @@ public class Item extends GenericModel {
     private String name;
     private String type;
     private String pictureLink;
+    private String currentStatus;
     
     @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
     private Set<Lending> lendings;
@@ -80,5 +81,13 @@ public class Item extends GenericModel {
 
     public void setLending(Set<Lending> lendings) {
         this.lendings = lendings;
+    }
+
+    public String getCurrentStatus() {
+        return currentStatus;
+    }
+
+    public void setCurrentStatus(String currentStatus) {
+        this.currentStatus = currentStatus;
     }
 }
