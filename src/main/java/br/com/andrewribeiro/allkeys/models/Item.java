@@ -1,5 +1,6 @@
 package br.com.andrewribeiro.allkeys.models;
 
+import br.com.andrewribeiro.allkeys.item.command.BuildItemPictureCommand;
 import br.com.andrewribeiro.allkeys.lending.daos.ItemsNotLendedDAO;
 import br.com.andrewribeiro.allkeys.item.command.ValidateItemBeforeInsertCommand;
 import br.com.andrewribeiro.ribrest.annotations.RibrestEndpointConfigurator;
@@ -19,7 +20,8 @@ import javax.persistence.OneToMany;
     @RibrestEndpointConfigurator(
             method = "POST",
             beforeCommands = {
-                ValidateItemBeforeInsertCommand.class
+                ValidateItemBeforeInsertCommand.class,
+                BuildItemPictureCommand.class,
             }
     ),
     @RibrestEndpointConfigurator,
@@ -27,6 +29,7 @@ import javax.persistence.OneToMany;
             method="PUT",
             path="{id}",
             beforeCommands = {
+                BuildItemPictureCommand.class,
                 GetPersistentModelCommand.class,
                 MergeModelToPersistedModelCommand.class
             }

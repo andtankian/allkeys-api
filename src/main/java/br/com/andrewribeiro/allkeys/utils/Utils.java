@@ -47,6 +47,7 @@ public class Utils {
         String fileName = stringBuilder.append(System.currentTimeMillis()).append(".png").toString();
         stringBuilder.delete(0, stringBuilder.length());
         Path path = Paths.get(stringBuilder.append(Constants.STATIC_SRC).append(File.separator).append(fileName).toString());
+        System.out.println(path.toAbsolutePath().toString());
         Files.write(path,dataBase64);
         stringBuilder.delete(0, stringBuilder.length());        
         return stringBuilder.append(Constants.BASE_URL)

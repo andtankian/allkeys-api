@@ -28,15 +28,6 @@ public class ValidateItemBeforeInsertCommand extends GenericCommand {
         if (item.getType() == null || item.getType().isEmpty()) {
             throw exception("invalid type");
         }
-
-        if (item.getPictureLink() != null && !item.getPictureLink().isEmpty()) {
-            try {
-                item.setPictureLink(Utils.saveFileAndGenerateLink(item.getPictureLink()));
-            } catch (Exception e) {
-                throw exception("error while processing item image");
-            }
-
-        }
     }
 
 }

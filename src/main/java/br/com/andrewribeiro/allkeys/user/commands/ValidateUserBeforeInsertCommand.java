@@ -40,22 +40,6 @@ public class ValidateUserBeforeInsertCommand extends GenericCommand {
             user.setSecureCode(Utils.generateNewSecureCode());
         }
 
-        if (user.getPictureLink() != null && !user.getPictureLink().isEmpty()) {
-            try {
-                String base64 = Utils.cleanToValidBase64(user.getPictureLink());
-                byte[] bytePicture = Base64.getDecoder().decode(base64);
-                StringBuilder stringBuilder = new StringBuilder();
-                String fileName = stringBuilder.append(user.getSecureCode()).append(".png").toString();
-                stringBuilder.delete(0, stringBuilder.length());
-                Path path = Paths.get(stringBuilder.append(Constants.STATIC_SRC).append(File.separator).append(fileName).toString());
-                Files.write(path, bytePicture);
-                stringBuilder.delete(0, stringBuilder.length());
-                user.setPictureLink(stringBuilder.append(Constants.BASE_URL).append(Constants.STATIC_PATH).append(File.separator).append(fileName).toString());
-            } catch (Exception e) {
-                throw new RibrestDefaultException("problem saving picture");
-            }
-        }
-
     }
 
 }

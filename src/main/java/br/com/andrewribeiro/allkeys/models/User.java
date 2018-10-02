@@ -1,6 +1,7 @@
 package br.com.andrewribeiro.allkeys.models;
 
 
+import br.com.andrewribeiro.allkeys.user.commands.BuildProfilePictureCommand;
 import br.com.andrewribeiro.allkeys.user.commands.ValidateUserBeforeInsertCommand;
 import br.com.andrewribeiro.ribrest.annotations.RibrestEndpointConfigurator;
 import br.com.andrewribeiro.ribrest.annotations.RibrestModel;
@@ -17,7 +18,8 @@ import javax.persistence.Entity;
     @RibrestEndpointConfigurator(
             method = "POST",
             beforeCommands = {
-                ValidateUserBeforeInsertCommand.class
+                ValidateUserBeforeInsertCommand.class,
+                BuildProfilePictureCommand.class
             }
     ),
     @RibrestEndpointConfigurator,
@@ -25,6 +27,7 @@ import javax.persistence.Entity;
             method = "PUT",
             path = "{id}",
             beforeCommands = {
+                BuildProfilePictureCommand.class,
                 GetPersistentModelCommand.class,
                 MergeModelToPersistedModelCommand.class
             }
