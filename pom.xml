@@ -3,13 +3,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>br.com.andrewribeiro</groupId>
   <artifactId>allkeys-api</artifactId>
-  <version>1.3.1-SNAPSHOT</version>
+  <version>1.4.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <artifactId>Ribrest</artifactId>
       <groupId>com.github.andtankian</groupId>
-      <version>1.17.4-SNAPSHOT</version>
+      <version>1.21.0</version>
     </dependency>
     <dependency>
       <artifactId>mysql-connector-java</artifactId>

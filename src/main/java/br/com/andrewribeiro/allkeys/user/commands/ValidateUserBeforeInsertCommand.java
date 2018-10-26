@@ -2,14 +2,8 @@ package br.com.andrewribeiro.allkeys.user.commands;
 
 import br.com.andrewribeiro.allkeys.generics.GenericCommand;
 import br.com.andrewribeiro.allkeys.models.User;
-import br.com.andrewribeiro.allkeys.utils.Constants;
 import br.com.andrewribeiro.allkeys.utils.Utils;
-import br.com.andrewribeiro.ribrest.exceptions.RibrestDefaultException;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Base64;
+import br.com.andrewribeiro.ribrest.core.exceptions.RibrestDefaultException;
 
 /**
  *

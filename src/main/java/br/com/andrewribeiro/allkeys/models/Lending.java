@@ -2,11 +2,10 @@ package br.com.andrewribeiro.allkeys.models;
 
 import br.com.andrewribeiro.allkeys.lending.command.DevolveLendingCommand;
 import br.com.andrewribeiro.allkeys.lending.command.ValidateLendingBeforeInsertCommand;
-import br.com.andrewribeiro.ribrest.annotations.RibrestEndpointConfigurator;
-import br.com.andrewribeiro.ribrest.annotations.RibrestModel;
+import br.com.andrewribeiro.ribrest.core.annotations.RibrestEndpointConfigurator;
+import br.com.andrewribeiro.ribrest.core.annotations.RibrestModel;
 import br.com.andrewribeiro.ribrest.services.command.GetPersistentChildrenModelCommand;
 import br.com.andrewribeiro.ribrest.services.command.GetPersistentModelCommand;
-import br.com.andrewribeiro.ribrest.services.command.MergeModelToPersistedModelCommand;
 import java.sql.Timestamp;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

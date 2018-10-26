@@ -1,6 +1,6 @@
 package br.com.andrewribeiro.allkeys.models;
 
-import br.com.andrewribeiro.ribrest.model.abstracts.AbstractModel;
+import br.com.andrewribeiro.ribrest.core.model.AbstractModel;
 import java.sql.Timestamp;
 import javax.persistence.Entity;
 

@@ -2,7 +2,7 @@ package br.com.andrewribeiro.allkeys.lending.command;
 
 import br.com.andrewribeiro.allkeys.models.Lending;
 import br.com.andrewribeiro.allkeys.utils.Utils;
-import br.com.andrewribeiro.ribrest.exceptions.RibrestDefaultException;
+import br.com.andrewribeiro.ribrest.core.exceptions.RibrestDefaultException;
 import br.com.andrewribeiro.ribrest.services.command.AbstractCommand;
 
 /**

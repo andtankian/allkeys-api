@@ -2,9 +2,11 @@ package br.com.andrewribeiro.allkeys.models;
 
 
 import br.com.andrewribeiro.allkeys.user.commands.BuildProfilePictureCommand;
+import br.com.andrewribeiro.allkeys.user.commands.FillUserWithQueries;
+import br.com.andrewribeiro.allkeys.user.dao.UsersBySecureCodeDAO;
 import br.com.andrewribeiro.allkeys.user.commands.ValidateUserBeforeInsertCommand;
-import br.com.andrewribeiro.ribrest.annotations.RibrestEndpointConfigurator;
-import br.com.andrewribeiro.ribrest.annotations.RibrestModel;
+import br.com.andrewribeiro.ribrest.core.annotations.RibrestEndpointConfigurator;
+import br.com.andrewribeiro.ribrest.core.annotations.RibrestModel;
 import br.com.andrewribeiro.ribrest.services.command.GetPersistentModelCommand;
 import br.com.andrewribeiro.ribrest.services.command.MergeModelToPersistedModelCommand;
 import javax.persistence.Column;
@@ -36,6 +38,12 @@ import javax.persistence.Entity;
     @RibrestEndpointConfigurator(
             method = "GET",
             path = "{id}"
+    ),
+    @RibrestEndpointConfigurator(
+            method = "GET",
+            path = "bysecurecode",
+            beforeCommands = FillUserWithQueries.class,
+            dao = UsersBySecureCodeDAO.class
     )
 })
 @Entity(name = "Uzer")

@@ -25,9 +25,10 @@ public class UserTest extends AllkeysTest {
         checkPreconditionFailed();
         checkErrorCause("empty email");
     }
-    
+
     @Test
-    public void invalidEmailCreatingNewUser(){
+    @Ignore
+    public void invalidEmailCreatingNewUser() {
         MultivaluedMap mvm = new MultivaluedHashMap();
         mvm.add("email", "ribrest");
         postNewUser(new Form(mvm));
@@ -44,6 +45,7 @@ public class UserTest extends AllkeysTest {
     }
 
     @Test
+    @Ignore
     public void missingNameCreatingNewUser() {
         MultivaluedMap mvm = new MultivaluedHashMap();
         mvm.add("email", "andrew.ribeiro@etec.sp.gov.br");
@@ -52,9 +54,10 @@ public class UserTest extends AllkeysTest {
         checkErrorCause("empty name");
 
     }
-    
+
     @Test
-    public void shortNameCreatingNewUser(){
+    @Ignore
+    public void shortNameCreatingNewUser() {
         MultivaluedHashMap mvm = new MultivaluedHashMap();
         mvm.add("email", "andrew.ribeiro@etec.sp.gov.br");
         mvm.add("fullName", "An");
@@ -62,9 +65,10 @@ public class UserTest extends AllkeysTest {
         checkPreconditionFailed();
         checkErrorCause("short name");
     }
-    
+
     @Test
-    public void shortSecureCode(){
+    @Ignore
+    public void shortSecureCode() {
         MultivaluedHashMap mvm = new MultivaluedHashMap();
         mvm.add("email", "andrew.ribeiro@etec.sp.gov.br");
         mvm.add("fullName", "Andrew Ribeiro");
@@ -73,15 +77,23 @@ public class UserTest extends AllkeysTest {
         checkPreconditionFailed();
         checkErrorCause("short secure code");
     }
-    
+
     @Test
-    public void validUser(){
+    @Ignore
+    public void validUser() {
         MultivaluedHashMap mvm = new MultivaluedHashMap();
         mvm.add("email", "andrew.ribeiro@etec.sp.gov.br");
         mvm.add("fullName", "Andrew Ribeiro");
         mvm.add("secureCode", "12092017");
         postNewUser(new Form(mvm));
         checkCreated();
+    }
+
+    @Test
+    public void getUserBySecureCode() {
+        response = get(User.class, "/bysecurecode?secureCode=200720");
+        String responseText = response.readEntity(String.class);
+        System.out.println(responseText);
     }
 
     private void postNewUser(Form form) {
@@ -91,24 +103,22 @@ public class UserTest extends AllkeysTest {
     private void checkPreconditionFailed() {
         Assert.assertEquals(Response.Status.PRECONDITION_FAILED.getStatusCode(), response.getStatus());
     }
-    
-    private void checkCreated(){
+
+    private void checkCreated() {
         Assert.assertEquals(Response.Status.CREATED.getStatusCode(), response.getStatus());
     }
-    
-    void checkErrorCause(String cause){
+
+    void checkErrorCause(String cause) {
         Assert.assertEquals(cause, getErrorMessage());
     }
-    
-    private String getErrorMessage(){
+
+    private String getErrorMessage() {
         JSONObject jsonObject = getJsonObject();
         return jsonObject.getString("cause");
     }
-    
-    private JSONObject getJsonObject(){
+
+    private JSONObject getJsonObject() {
         return new JSONObject(response.readEntity(String.class));
     }
-    
-    
 
 }

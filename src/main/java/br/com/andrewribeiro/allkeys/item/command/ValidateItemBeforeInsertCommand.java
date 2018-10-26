@@ -2,9 +2,7 @@ package br.com.andrewribeiro.allkeys.item.command;
 
 import br.com.andrewribeiro.allkeys.generics.GenericCommand;
 import br.com.andrewribeiro.allkeys.models.Item;
-import br.com.andrewribeiro.allkeys.utils.Utils;
-import br.com.andrewribeiro.ribrest.exceptions.RibrestDefaultException;
-import java.util.Base64;
+import br.com.andrewribeiro.ribrest.core.exceptions.RibrestDefaultException;
 
 /**
  *

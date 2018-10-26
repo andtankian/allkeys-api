@@ -1,6 +1,5 @@
 package br.com.andrewribeiro.allkeys.utils;
 
-import br.com.andrewribeiro.ribrest.model.interfaces.Model;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

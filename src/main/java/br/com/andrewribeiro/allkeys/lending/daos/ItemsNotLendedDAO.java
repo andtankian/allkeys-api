@@ -1,11 +1,9 @@
 package br.com.andrewribeiro.allkeys.lending.daos;
 
 import br.com.andrewribeiro.allkeys.models.Item;
-import br.com.andrewribeiro.ribrest.dao.CRUDDAOImpl;
+import br.com.andrewribeiro.ribrest.core.persistence.CRUDDAOImpl;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
