@@ -9,7 +9,7 @@
     <dependency>
       <artifactId>Ribrest</artifactId>
       <groupId>com.github.andtankian</groupId>
-      <version>1.21.0</version>
+      <version>1.23.0</version>
     </dependency>
     <dependency>
       <artifactId>mysql-connector-java</artifactId>
