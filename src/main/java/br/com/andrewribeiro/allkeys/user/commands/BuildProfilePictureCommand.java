@@ -16,7 +16,7 @@ public class BuildProfilePictureCommand extends AbstractCommand{
         
         User user = (User) flowContainer.getModel();
         
-        if(user.getPictureLink() != null && !user.getPictureLink().isEmpty()){
+        if(user.getPictureLink() != null && !user.getPictureLink().isEmpty() && !user.getPictureLink().startsWith("http")){
             user.setPictureLink(Utils.saveFileAndGenerateLink(user.getPictureLink()));
         }
     }
