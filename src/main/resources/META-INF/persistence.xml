@@ -3,12 +3,18 @@
   <persistence-unit name="allkeys" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/allkeys"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://0.0.0.0:3306/allkeys"/>
       <property name="javax.persistence.jdbc.user" value="allkeys"/>
-      <property name="javax.persistence.jdbc.password" value="G85wc+"/>
+      <property name="javax.persistence.jdbc.password" value="1234"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
       <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.hikari.minimumIdle" value="5" />
+      <property name="hibernate.hikari.maximumPoolSize" value="10" />
+      <property name="hibernate.hikari.idleTimeout" value="30000" />
+      <property name="hibernate.hikari.connectionTimeout" value="30000" />
+      <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
     </properties>
   </persistence-unit>
 </persistence>

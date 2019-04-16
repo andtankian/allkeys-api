@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>br.com.andrewribeiro</groupId>
   <artifactId>allkeys-api</artifactId>
-  <version>1.4.2-SNAPSHOT</version>
+  <version>1.4.3</version>
   <packaging>jar</packaging>
   <dependencies>
     <dependency>
@@ -11,6 +11,16 @@
       <groupId>com.github.andtankian</groupId>
       <version>1.23.0</version>
     </dependency>
+	<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-hikaricp</artifactId>
+            <version>5.4.1.Final</version>
+	</dependency>
+	<dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+	</dependency> 
     <dependency>
       <artifactId>mysql-connector-java</artifactId>
       <groupId>mysql</groupId>
